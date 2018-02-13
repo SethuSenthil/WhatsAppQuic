@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="robots" content="noindex">
+  <meta name="googlebot" content="noindex">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="theme-color" content="#009688">
-  <meta name="description" content="Quickly send messages to whatsapp users not in your contacts!">
-  <meta name="keywords" content="WhatsAppQuic,whatsappquic,WhatsApp Quic, Whats App Quic, Whatsapp Quick, WhatsappQuick, Whatsapp,">
-  <meta property="og:title" content="WhatsAppQuic"/>
-  <meta property="og:type" content="App"/>
-  <meta property="og:url" content="https://SethuSenthil.github.io/WhatsAppQuic" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/192x192.png" />
-  <meta property="og:description" content="Quickly send messages to whatsapp users not in your contacts!" />
   <link rel="icon" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/iosdfl">
   <link rel="apple-touch-icon" sizes="76x76" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/76x76.png">
@@ -45,7 +40,6 @@
     <div class="nav-wrapper teal darken-1">
       <a href="" onclick="location.reload();" class="brand-logo center">WhatappQuic</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="https://sethusenthil.github.io/WhatsApp-Memo/">Whatsapp Memo</a></li>
       </ul>
       <ul id="slide-out" class="side-nav">
         <li>
@@ -57,15 +51,15 @@
             <span class="black-text name">WhatsAppQuic</span>
             <span class="black-text email">v.0.0.2</span>
         </li>
-        <li><a href="mailto:sethunarayansenthil@gmail.com?Feedback%20%5BWhatsApp%20Quick%5D" class="waves-effect"><i class="material-icons">feedback</i>Send Feedback</a></li>
-        <li><a href="https://sethusenthil.github.io/WhatsApp-Memo/index.html">WhatsApp Memo</a></li>
-        <li><a href="https://sethusenthil.github.io" class="waves-effect">SethuSenthil.github.io</a></li>
+        <li><a onclick="window.open('mailto:sethunarayansenthil@gmail.com?Feedback%20%5BWhatsApp%20Quick%5D')" style="cursor:pointer"class="waves-effect"><i class="material-icons">feedback</i>Send Feedback</a></li>
+        <li><a onclick="window.open('https://sethusenthil.github.io/WhatsApp-Memo/index.html')" style="cursor:pointer">WhatsApp Memo</a></li>
+        <li><a onclick="window.open('https://sethusenthil.github.io')" style="cursor:pointer" class="waves-effect">SethuSenthil.github.io</a></li>
         <li>
           <div class="divider"></div>
         </li>
         <li><a class="subheader">Developer</a></li>
-        <li><a class="waves-effect" href="https://github.com/SethuSenthil/WhatsAppQuic"><i class="material-icons">star</i>Star on Github</a></li>
-        <li><a class="waves-effect" href="https://github.com/SethuSenthil/WhatsAppQuic/issues/new"> <i class="material-icons">bug_report</i> Report Bug</a></li>
+        <li><a onclick="window.open('https://github.com/SethuSenthil/WhatsAppQuic')" style="cursor:pointer"  class="waves-effect"><i class="material-icons">star</i>Star on Github</a></li>
+        <li><a onclick="window.open('https://github.com/SethuSenthil/WhatsAppQuic/issues/new')" style="cursor:pointer"  class="waves-effect"> <i class="material-icons">bug_report</i> Report Bug</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
@@ -91,63 +85,6 @@
     <i data-wow-delay="3s" class="material-icons right wow tada">send</i>
   </button>
       <br><br>
-      <span id="jsdown">
-      <div class="row">
-        <div class="col s12 m6">
-          <div data-wow-delay="1.5s" class="card-panel teal laptop wow zoomIn">
-            <span class="white-text">
-          <h4 class="card-title"><i data-wow-delay="2.2s"  class="material-icons wow rotateIn">info</i> What is this?</h4><br>
-          <span class="card-text">
-          It is very inconvient to add someone to your contacts just to send a message on Whatsapp. So why do it? (Drum rool please!)
-          WhatsAppQuic is a WebApp that allows you to send messages to Whatsapp users without adding them to you contacts.
-        </span>
-          </div>
-        </div>
-        <div class="col s12 m6">
-          <div data-wow-delay="2s" class="card-panel teal laptop wow zoomIn">
-            <span class="white-text">
-          <h4 class="card-title"><i data-wow-delay="2.3s" class="material-icons wow rotateIn">bubble_chart</i> How to use</h4><br>
-          <span class="card-text">
-          Enter the phone number of the user you wish to message in the first textbox, then enter the message you would like to send the user on the second textbox (the default is set to "Hi!")
-          </span>
-            <br>
-            <br>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="card-panel teal phonedis wow slideInUp">
-            <span class="white-text">
-          <h4 class="card-title"><i class="material-icons wow rotateIn">info</i> What is this?</h4><br>
-          <span class="card-text">
-          It is very inconvient to add someone to your contacts just to send a message on Whatsapp. So why do it? (Drum rool please!)
-          WhatsAppQuic is a WebApp that allows you to send messages to Whatsapp users without adding them to you contacts.
-        </span>
-          </div>
-        </div>
-        <div class="col s12 m6">
-          <div class="card-panel teal phonedis wow slideInUp">
-            <span class="white-text">
-          <h4 class="card-title"><i class="material-icons wow rotateIn">bubble_chart</i> How to use</h4><br>
-          <span class="card-text">
-          Enter the phone number of the user you wish to message in the first textbox, then enter the message you would like to send the user on the second textbox (the default is set to "Hi!")
-          </span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="card-panel teal wow slideInUp">
-        <span class="white-text">
-      <h4 class="card-title"><i class="material-icons wow rotateIn">file_download</i>Download</h4><br>
-      <span class="card-text" id="download">
-        Sorry we dont have an App for windows yet 😞
-      </span>
-    </span>
-  </span>
-</span>
-</span>
     </center>
     </div>
   </div>
@@ -181,7 +118,8 @@
       }
       $(".button-collapse").sideNav();
     </script>
-</body onload="sendtophone()">
+</body>
+  <br>         <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>        <br>
 <footer class="page-footer teal">
   <div class="container">
     <div class="row">
@@ -204,22 +142,24 @@
       </div>
     </div>
   </div>
+<style>
+*{
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
 
+</style>
   <div class="footer-copyright">
     <div class="container">
       © 2018 by: <a href="https://sethusenthil.github.io" class="cclink">Sethu Senthil</a>
     </div>
   </div>
 </footer>
-<script src="https://davidshimjs.github.io/qrcodejs/qrcode.min.js"></script>
-<div class="popup" data-popup="popup-1">
-<div class="popup-inner">
-<h3>How do you want to send it?</h3>
-<div id="qrcode"></div>
-<p>Or go to <a href="https://bit.ly/WhatsAppQuic">bit.ly/WhatsAppQuic</a></p>
 <script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), "https://sethusenthil.github.io/WhatsAppQuic2");
-</script><p><a data-popup-close="popup-1" href="#">Close</a></p>
-</div>
-</div>
+
+</script>
 </html>

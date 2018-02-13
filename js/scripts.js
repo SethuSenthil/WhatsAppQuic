@@ -1,10 +1,15 @@
 /*!
- * WhatsAppQuic v0.0.1 (https://SethuSenthil.github.io/WhatsAppQuic)
+ * WhatsAppQuic v0.0.2 (https://SethuSenthil.github.io/WhatsAppQuic)
  * Copyright 2018 Sethu Senthil
  * MIT License (https://SethuSenthil.github.io/WhatsAppQuic/LICENSE)
  */
 if (window.matchMedia('(display-mode: standalone)').matches) {
   document.getElementById('jsdown').innerHTML = "<br><br><br><br><br><br><br><br><br><br>";
+}
+var $toastContent = $('<span id="goAway">Want to send this to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>'));
+var fixtime = 10000;
+function bye() {
+  document.getElementById("goAway").innerHTML = "";
 }
 var input = $(".phone"),
   output = $("#output");
@@ -16,10 +21,10 @@ var ua = navigator.userAgent.toLowerCase();
 var isAndroid = ua.indexOf("android") > -1;
 var out = document.getElementById('out');
 if (is_Mac) document.getElementById("download").innerHTML = "<p>Download our Mac OS app! It doesn't hogg any system resources, and you will get to experience WhatsAppQuic offline!</p> <a class='waves-effect waves-light btn red lighten-1'><i class='material-icons left'>file_download</i>WhatsAppQuic for mac</a>"
-if (is_iOS) document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Safari on iOS, click on the 3 dot menu and click add to homescreen."
-if (is_iPad) alert("You can still access WhatsAppQuic, but unfortunately WhatsApp does not support iPad therefor WhatsAppQuic does not either 😞")
+if (is_iOS) document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Safari on iOS, click on the 3 dot menu and click add to homescreen.", bye()
+if (is_iPad) alert("You can still access WhatsAppQuic, but unfortunately WhatsApp does not support iPad therefor WhatsAppQuic does not either 😞"), bye()
 if (isAndroid) {
-  document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Chrome on Android, click on the 3 dot menu and click add to homescreen."
+  document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Chrome on Android, click on the 3 dot menu and click add to homescreen.", bye()
 }
 input.intlTelInput({
   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js"
@@ -46,6 +51,7 @@ input.on("keyup change", function() {
     output.text("Please enter a numb2er below");
   }
 });
+Materialize.toast($toastContent, fixtime);
 
 function main() {
   validateNone()
@@ -82,11 +88,21 @@ function Share() {
       .catch((error) => console.log('Share Error', error));
   }
 }
+
 function sending() {
   Materialize.toast('Sending...', 5000, )
 }
-
+$(function() {
+  $('[data-popup-open]').on('click', function(e) {
+    var targeted_popup_class = jQuery(this).attr('data-popup-open');
+    $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+    e.preventDefault();
+  });
+  $('[data-popup-close]').on('click', function(e) {
+    var targeted_popup_class = jQuery(this).attr('data-popup-close');
+    $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+    e.preventDefault();
+  });
+});
 // TODO: Add toast when user is on a non mobile device, that opens or shares link/QR Code to phone
 // TODO: Build/compile and upload Mac App
-//var $toastContent = $('<span>Want to send this to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>'));
-//var ////sendphone = Materialize.toast($toastContent, 1000);
