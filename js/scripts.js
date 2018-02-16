@@ -8,12 +8,12 @@ if (window.matchMedia('(display-mode: standalone)').matches) {
 }
 var $toastContent = $('<span id="goAway">Want to send this to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>'));
 var fixtime = 10000;
+
 function bye() {
   document.getElementById("goAway").innerHTML = "";
 }
 var input = $(".phone"),
   output = $("#output");
-var openedWindow;
 var is_iOS = navigator.platform.match(/(iPhone|iPod|iPad)/i) ? true : false;
 var is_Mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
 var is_iPad = navigator.platform == "iPad";
@@ -54,12 +54,9 @@ input.on("keyup change", function() {
 Materialize.toast($toastContent, fixtime);
 
 function main() {
-  validateNone()
-  window.open('whatsapp://send?text=' + document.getElementById('message').value + '&phone=' + input.intlTelInput("getNumber"));
-  closeOpenedWindow()
-}
+  validateNone();
+  var openedWindow = window.open('whatsapp://send?text=' + document.getElementById('message').value + '&phone=' + input.intlTelInput("getNumber"));
 
-function closeOpenedWindow() {
   setTimeout(function() {
     openedWindow.close();
   }, 3000);
