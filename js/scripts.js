@@ -6,20 +6,21 @@
 if (window.matchMedia('(display-mode: standalone)').matches) {
   document.getElementById('jsdown').innerHTML = "<br><br><br><br><br><br><br><br><br><br>";
 }
-var $toastContent = $('<span id="goAway">Want to send this to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>'));
-var fixtime = 10000;
+var $toastContent = $('<span id="goAway">Want to send this to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>')),
+fixtime = 10000;
 
 function bye() {
   document.getElementById("goAway").innerHTML = "";
 }
 var input = $(".phone"),
-  output = $("#output");
-var is_iOS = navigator.platform.match(/(iPhone|iPod|iPad)/i) ? true : false;
-var is_Mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-var is_iPad = navigator.platform == "iPad";
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1;
-var out = document.getElementById('out');
+  output = $("#output"),
+is_iOS = navigator.platform.match(/(iPhone|iPod|iPad)/i) ? true : false,
+is_Mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0,
+is_iPad = navigator.platform == "iPad",
+ua = navigator.userAgent.toLowerCase(),
+isAndroid = ua.indexOf("android") > -1,
+out = document.getElementById('out');
+
 if (is_Mac) document.getElementById("download").innerHTML = "<p>Download our Mac OS app! It doesn't hogg any system resources, and you will get to experience WhatsAppQuic offline!</p> <a class='waves-effect waves-light btn red lighten-1'><i class='material-icons left'>file_download</i>WhatsAppQuic for mac</a>"
 if (is_iOS) document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Safari on iOS, click on the 3 dot menu and click add to homescreen.", bye()
 if (is_iPad) alert("You can still access WhatsAppQuic, but unfortunately WhatsApp does not support iPad therefor WhatsAppQuic does not either 😞"), bye()
