@@ -102,5 +102,8 @@ $(function() {
     e.preventDefault();
   });
 });
+var iconUrl = 'https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/192x192.png';
+var imgElement = document.createElement('img');
+imgElement.src = iconUrl;
 // TODO: Add toast when user is on a non mobile device, that opens or shares link/QR Code to phone
 // TODO: Build/compile and upload Mac App

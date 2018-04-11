@@ -1,60 +1,51 @@
+var PRECACHE = 'precache-v1';
+var RUNTIME = 'runtime';
 
-'use strict';
-const CACHE_VERSION = 1;
-let CURRENT_CACHES = {
-  offline: 'offline-v' + CACHE_VERSION
-};
-const OFFLINE_URL = 'offline.html';
+// list the files you want cached by the service worker
+PRECACHE_URLS = [
+  'index.html',
+  './',
+  '/css/style.css',
+  '/js/scripts.js'
+];
 
-function createCacheBustedRequest(url) {
-  let request = new Request(url, {cache: 'reload'});
-  if ('cache' in request) {
-    return request;
-  }
 
-  let bustedUrl = new URL(url, self.location.href);
-  bustedUrl.search += (bustedUrl.search ? '&' : '') + 'cachebust=' + Date.now();
-  return new Request(bustedUrl);
-}
-
+// the rest below handles the installing and caching
 self.addEventListener('install', event => {
   event.waitUntil(
-    fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
-      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(OFFLINE_URL, response);
-      });
-    })
+     caches.open(PRECACHE).then(cache => cache.addAll(PRECACHE_URLS)).then(self.skipWaiting())
   );
 });
 
 self.addEventListener('activate', event => {
-  let expectedCacheNames = Object.keys(CURRENT_CACHES).map(function(key) {
-    return CURRENT_CACHES[key];
-  });
-
+  const currentCaches = [PRECACHE, RUNTIME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (expectedCacheNames.indexOf(cacheName) === -1) {
-            console.log('Deleting out of date cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+      return cacheNames.filter(cacheName => !currentCaches.includes(cacheName));
+    }).then(cachesToDelete => {
+      return Promise.all(cachesToDelete.map(cacheToDelete => {
+        return caches.delete(cacheToDelete);
+      }));
+    }).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', event => {
-  if (event.request.mode === 'navigate' ||
-      (event.request.method === 'GET' &&
-       event.request.headers.get('accept').includes('text/html'))) {
-    console.log('Handling fetch event for', event.request.url);
+  if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
-      fetch(event.request).catch(error => {
-        console.log('Fetch failed; returning offline page instead.', error);
-        return caches.match(OFFLINE_URL);
+      caches.match(event.request).then(cachedResponse => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+
+        return caches.open(RUNTIME).then(cache => {
+          return fetch(event.request).then(response => {
+            // Put a copy of the response in the runtime cache.
+            return cache.put(event.request, response.clone()).then(() => {
+              return response;
+            });
+          });
+        });
       })
     );
   }
