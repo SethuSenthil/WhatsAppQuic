@@ -5,5 +5,5 @@ Quickly send messages to whatsapp users not in your contacts!
 </Description>
 <InputEncoding>UTF-8</InputEncoding>
 <Image width="16" height="16" type="/images/favicon.ico"></Image>
-<Url type="text/html" method="get" template="http://www.yoursite.com/search/?query={searchTerms}"/>
+<Url type="text/html" method="get" template="https://sethusenthil.com/WhatsAppQuic/?query={searchTerms}"/>
 </OpenSearchDescription>
