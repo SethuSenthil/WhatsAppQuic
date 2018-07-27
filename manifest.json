@@ -1,11 +1,16 @@
+
 {
-  "short_name": "WhatsAppQuic",
-  "name": "WhatsAppQuic",
-  "icons": [{
-    "src": "images/192x192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }],
   "background_color": "#009688",
-  "display": "standalone"
+  "description": "WhatsAppQuic",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "images/192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "WhatsAppQuic",
+  "short_name": "WhatsAppQuic",
+  "start_url": "/?utm_source=homescreen",
 }

@@ -6,13 +6,16 @@
 if (window.matchMedia('(display-mode: standalone)').matches) {
   document.getElementById('jsdown').innerHTML = "<br><br><br><br><br><br><br><br><br><br>";
 }
-var $toastContent = $('<span id="goAway">Want to send this to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>')),
+const greetings = ['Hi!','Whats up!','Sup','Whats up','hi','yo'];
+const randomGreet = Math.floor(Math.random() * greetings.length);
+document.getElementById('message').value = greetings[randomGreet];
+let $toastContent = $('<span id="goAway">Want to send this website to your phone?</span>').add($('<button class="btn-flat toast-action red-text grey darken-3" data-popup-open="popup-1" >Yes</button><button class="btn-flat toast-action darken-3">No</button>')),
 fixtime = 10000;
 
 function bye() {
   document.getElementById("goAway").innerHTML = "";
 }
-var input = $(".phone"),
+const input = $(".phone"),
   output = $("#output"),
 is_iOS = navigator.platform.match(/(iPhone|iPod|iPad)/i) ? true : false,
 is_Mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0,
@@ -56,10 +59,12 @@ Materialize.toast($toastContent, fixtime);
 
 function main() {
   validateNone();
-  var openedWindow = window.open('whatsapp://send?text=' + document.getElementById('message').value + '&phone=' + input.intlTelInput("getNumber"));
-
+  let key = 'whatsapp://send?text=' + document.getElementById('message').value + '&phone=' + input.intlTelInput("getNumber");
+  let iframed = `<iframe src="${key}" frameborder="0"></iframe> `;
+  document.getElementById('invoke').innerHTML = iframed;
+  console.log(iframed);
   setTimeout(function() {
-    openedWindow.close();
+    document.getElementById('invoke').innerHTML = '';
   }, 3000);
 }
 $("#message").keyup(function(event) {
@@ -75,7 +80,7 @@ $("#telinp").keyup(function(event) {
 });
 
 function Share() {
-  // FIXME: Fix floating share button
+  // FIXME: Optimize share button more OS than Android
   if (navigator.share) {
     navigator.share({
         title: 'I found a cool WebApp called WhatsAppQuic!',

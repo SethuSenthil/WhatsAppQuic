@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="theme-color" content="#009688">
@@ -11,7 +12,7 @@
   <meta name="keywords" content="WhatsAppQuic,whatsappquic,WhatsApp Quic, Whats App Quic, Whatsapp Quick, WhatsappQuick, Whatsapp,">
   <meta property="og:title" content="WhatsAppQuic"/>
   <meta property="og:type" content="App"/>
-  <meta property="og:url" content="https://SethuSenthil.github.io/WhatsAppQuic" />
+  <meta property="og:url" content="https://sethusenthil.com/WhatsAppQuic" />
   <meta property="og:image" content="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/192x192.png" />
   <meta property="og:description" content="Quickly send messages to whatsapp users not in your contacts!" />
   <link rel="icon" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/favicon.ico" type="image/x-icon">
@@ -20,6 +21,7 @@
   <link rel="apple-touch-icon" sizes="120x120" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/120x120.png">
   <link rel="apple-touch-icon" sizes="152x152" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/192x192.png">
+  <link rel="search" type="application/opensearchdescription+xml" title="WhatsAppQuic" href="/opensearch.xml" />
   <title>WhatsAppQuic</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css">
@@ -45,7 +47,7 @@
     <div class="nav-wrapper teal darken-1">
       <a href="" onclick="location.reload();" class="brand-logo center">WhatappQuic</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="https://sethusenthil.github.io/WhatsApp-Memo/">Whatsapp Memo</a></li>
+        <li><a href="https://sethusenthil.com/WhatsApp-Memo/">Whatsapp Memo</a></li>
       </ul>
       <ul id="slide-out" class="side-nav">
         <li>
@@ -55,11 +57,11 @@
             </div>
             <iframe src="logo.html" frameborder="0" width="160px" height="155px"></iframe>
             <span class="black-text name">WhatsAppQuic</span>
-            <span class="black-text email">v.0.0.2</span>
+            <span class="black-text email">v.0.0.3</span>
         </li>
         <li><a href="mailto:sethunarayansenthil@gmail.com?Feedback%20%5BWhatsApp%20Quick%5D" class="waves-effect"><i class="material-icons">feedback</i>Send Feedback</a></li>
-        <li><a href="https://sethusenthil.github.io/WhatsApp-Memo/index.html">WhatsApp Memo</a></li>
-        <li><a href="https://sethusenthil.github.io" class="waves-effect">SethuSenthil.github.io</a></li>
+        <li><a href="https://sethusenthil.com/WhatsApp-Memo/index.html">WhatsApp Memo</a></li>
+        <li><a href="https://sethusenthil.com" class="waves-effect">SethuSenthil.com</a></li>
         <li>
           <div class="divider"></div>
         </li>
@@ -83,7 +85,7 @@
         </div>
         <div data-wow-delay=".5s" class="input-field col s6 wow slideInDown">
           <i class="material-icons prefix">message</i>
-          <input value="Hi!" id="message" type="text" class="validate">
+          <input value="" id="message" type="text" class="validate">
           <label for="icon_telephone"></label>
         </div>
       </form>
@@ -108,7 +110,7 @@
             <span class="white-text">
           <h4 class="card-title"><i data-wow-delay="2.3s" class="material-icons wow rotateIn">bubble_chart</i> How to use</h4><br>
           <span class="card-text">
-          Enter the phone number of the user you wish to message in the first textbox, then enter the message you would like to send the user on the second textbox (the default is set to "Hi!")
+          Enter the phone number of the user you wish to message in the first textbox, then enter the message you would like to send the user on the second textbox.
           </span>
             <br>
             <br>
@@ -151,12 +153,12 @@
     </center>
     </div>
   </div>
-
     <div class="fixed-action-btn vertical">
       <a class="btn-floating btn-large red pulse" onclick="Share()">
       <i class="large material-icons">share</i>
     </a>
     </div>
+    <div id="invoke"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"></script>
@@ -187,7 +189,7 @@
     <div class="row">
       <div class="col l6 s12">
         <h5 class="white-text">WhatsAppQuic</h5>
-        <p class="roboto">We do not collect any information, all the messages sent goes direectly to WhatsApp. Our code is open source. WhatsAppQuic was an idea sparked by <a href="https://sethusenthil.github.io/WhatsApp-Memo/index.html">WhatsApp Memo</a>.
+        <p class="roboto">We do not collect any information, all the messages sent goes direectly to WhatsApp. Our code is open source. WhatsAppQuic was an idea sparked by <a href="https://sethusenthil.com/WhatsApp-Memo/index.html">WhatsApp Memo</a>.
         </p>
         <p class="laptop"><a href="mailto:sethunarayansenthil@gmail.com?Feedback%20%5BWhatsApp%20Quick%5D"> <i class="material-icons">bug_report</i> Report Bug</a></p>
       </div>
@@ -204,10 +206,9 @@
       </div>
     </div>
   </div>
-
   <div class="footer-copyright">
     <div class="container">
-      © 2018 by: <a href="https://sethusenthil.github.io" class="cclink">Sethu Senthil</a>
+      © 2018 by: <a href="https://sethusenthil.com" class="cclink">Sethu Senthil</a>
     </div>
   </div>
 </footer>
@@ -218,7 +219,7 @@
 <div id="qrcode"></div>
 <p>Or go to <a href="https://bit.ly/WhatsAppQuic">bit.ly/WhatsAppQuic</a></p>
 <script type="text/javascript">
-new QRCode(document.getElementById("qrcode"), "https://sethusenthil.github.io/WhatsAppQuic2");
+new QRCode(document.getElementById("qrcode"), "https://sethusenthil.com/WhatsAppQuic2");
 </script><p><a data-popup-close="popup-1" href="#">Close</a></p>
 </div>
 </div>
