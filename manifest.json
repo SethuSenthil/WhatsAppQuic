@@ -1,16 +1,33 @@
-
 {
+  "name": "WhatsAppQuic",
+  "short_name": "WhatsAppQuic",
+  "description": "Quickly send messages to whatsapp users not in your contacts!",
+  "theme_color": "#009688",
   "background_color": "#009688",
-  "description": "WhatsAppQuic",
-  "display": "fullscreen",
+  "display": "standalone",
+  "Scope": "./",
+  "start_url": "index.html",
   "icons": [
     {
-      "src": "images/192x192.png",
-      "sizes": "192x192",
+      "src": "images/icons/icon-72x72.png",
+      "sizes": "76x76",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/icon-96x96.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/icon-128x128.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/icon-144x144.png",
+      "sizes": "180x180",
       "type": "image/png"
     }
   ],
-  "name": "WhatsAppQuic",
-  "short_name": "WhatsAppQuic",
-  "start_url": "/?utm_source=homescreen",
+  "splash_pages": null
 }
