@@ -25,10 +25,10 @@ isAndroid = ua.indexOf("android") > -1,
 out = document.getElementById('out');
 
 if (is_Mac) document.getElementById("download").innerHTML = "<p>Download our Mac OS app! It doesn't hogg any system resources, and you will get to experience WhatsAppQuic offline!</p> <a class='waves-effect waves-light btn red lighten-1'><i class='material-icons left'>file_download</i>WhatsAppQuic for mac</a>"
-if (is_iOS) document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Safari on iOS, click on the 3 dot menu and click add to homescreen.", bye()
+if (is_iOS) document.getElementById("download").innerHTML = "<p>Download our PWA! Its super lite, and this service will be available to access offline., and you will get to experience WhatsAppQuic offline!</p> <a id='pwaBtn' class='waves-effect waves-light btn red lighten-1'><i class='material-icons left'>file_download</i>WhatsAppQuic for iOS</a> ", bye()
 if (is_iPad) alert("You can still access WhatsAppQuic, but unfortunately WhatsApp does not support iPad therefor WhatsAppQuic does not either 😞"), bye()
 if (isAndroid) {
-  document.getElementById("download").innerHTML = "WhatsAppQuic is a WebApp, in other words it's an app that doesn't consume much resources such as hard drive space and RAM. Since its an App, you may access it offline! To download WhatsAppQuic via Chrome on Android, click on the 3 dot menu and click add to homescreen.", bye()
+  document.getElementById("download").innerHTML = "<p>Download our PWA! Its super lite, and this service will be available to access offline., and you will get to experience WhatsAppQuic offline!</p> <a id='pwaBtn' class='waves-effect waves-light btn red lighten-1'><i class='material-icons left'>file_download</i>WhatsAppQuic for Android</a> ", bye()
 }
 input.intlTelInput({
   utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/utils.js"
@@ -110,5 +110,26 @@ $(function() {
 var iconUrl = 'https://raw.githubusercontent.com/SethuSenthil/WhatsAppQuic/master/images/192x192.png';
 var imgElement = document.createElement('img');
 imgElement.src = iconUrl;
+var installPromptEvent;
+var btnInstall = document.getElementById('pwaBtn');
+
+window.addEventListener('beforeinstallprompt', function (event) {
+    event.preventDefault();
+    installPromptEvent = event;
+    btnInstall.removeAttribute('disabled');
+});
+
+btnInstall.addEventListener('click', function () {
+    btnInstall.setAttribute('disabled', '');
+    installPromptEvent.prompt();
+    installPromptEvent.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+        } else {
+            console.log('User dismissed the A2HS prompt');
+        }
+        installPromptEvent = null;
+    });
+});
 // TODO: Add toast when user is on a non mobile device, that opens or shares link/QR Code to phone
 // TODO: Build/compile and upload Mac App
