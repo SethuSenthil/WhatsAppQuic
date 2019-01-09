@@ -1,5 +1,5 @@
 /*!
- * WhatsAppQuic v0.0.2 (https://SethuSenthil.github.io/WhatsAppQuic)
+ * WhatsAppQuic v0.0.3 (https://SethuSenthil.github.io/WhatsAppQuic)
  * Copyright 2018 Sethu Senthil
  * MIT License (https://SethuSenthil.github.io/WhatsAppQuic/LICENSE)
  */
@@ -59,10 +59,12 @@ Materialize.toast($toastContent, fixtime);
 
 function main() {
   validateNone();
-  let key = 'whatsapp://send?text=' + document.getElementById('message').value + '&phone=' + input.intlTelInput("getNumber");
-  let iframed = `<iframe src="${key}" frameborder="0"></iframe> `;
+  let message = document.getElementById('message').value,
+      number = input.intlTelInput("getNumber").substr(1), //removes the '+' (first char in string) before the number according to whatsapp guidelines
+      key = `whatsapp://send?phone=${number}&text=${message}&source=https://sethusenthil.com/WhatsAppQuic&data=`, //builds URL which evokes app immediately bypassing Whatsapp API
+      iframed = `<iframe src="${key}" frameborder="0"></iframe> `; //code for iframe before mount, this will make it a streamlined process instead of opening a tab
   document.getElementById('invoke').innerHTML = iframed;
-  console.log(iframed);
+  //console.log(iframed);
   setTimeout(function() {
     document.getElementById('invoke').innerHTML = '';
   }, 3000);
@@ -80,7 +82,7 @@ $("#telinp").keyup(function(event) {
 });
 
 function Share() {
-  // FIXME: Optimize share button more OS than Android
+  // FIXME: Optimize share button more OS other than Android
   if (navigator.share) {
     navigator.share({
         title: 'I found a cool WebApp called WhatsAppQuic!',
