@@ -62,12 +62,9 @@ function main() {
   let message = document.getElementById('message').value,
       number = input.intlTelInput("getNumber").substr(1), //removes the '+' (first char in string) before the number according to whatsapp guidelines
       key = `whatsapp://send?phone=${number}&text=${message}&source=https://sethusenthil.com/WhatsAppQuic&data=`, //builds URL which evokes app immediately bypassing Whatsapp API
-      iframed = `<iframe src="${key}" frameborder="0"></iframe> `; //code for iframe before mount, this will make it a streamlined process instead of opening a tab
-  document.getElementById('invoke').innerHTML = iframed;
+      let tab = window.open(key)
+      setTimeout(function () { tab.close();}, 3000);
   //console.log(iframed);
-  setTimeout(function() {
-    document.getElementById('invoke').innerHTML = '';
-  }, 3000);
 }
 $("#message").keyup(function(event) {
   if (event.keyCode == 13) {
@@ -78,7 +75,6 @@ $("#message").keyup(function(event) {
 $("#telinp").keyup(function(event) {
   if (event.keyCode == 13) {
     $("#sendbtn").click();
-  }
 });
 
 function Share() {
