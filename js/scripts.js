@@ -62,7 +62,7 @@ function main() {
   let message = document.getElementById('message').value,
       number = input.intlTelInput("getNumber").substr(1), //removes the '+' (first char in string) before the number according to whatsapp guidelines
       key = `whatsapp://send?phone=${number}&text=${message}&source=https://sethusenthil.com/WhatsAppQuic&data=`, //builds URL which evokes app immediately bypassing Whatsapp API
-      let tab = window.open(key)
+      tab = window.open(key);
       setTimeout(function () { tab.close();}, 3000);
   //console.log(iframed);
 }
